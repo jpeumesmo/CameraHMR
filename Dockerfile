@@ -6,10 +6,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update; apt upgrade -y; apt install -y \
     git \
-    libsm6 libxrender1 libfontconfig1 \
-    build-essential
+    libsm6 libxrender1 libfontconfig1 libgl1-mesa-glx libglib2.0-0 libxext6 \
+    build-essential \
+    wget
 
-RUN pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118; \
+RUN pip install torch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0;  \
     pip install Cython
 
 COPY requirements.txt /tmp/requirements.txt
